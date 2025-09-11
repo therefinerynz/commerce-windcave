@@ -1,0 +1,47 @@
+{
+  "name": "therefinerynz/commerce-windcave",
+  "description": "Windcave PxPay 2.0 payment gateway for Craft Commerce 5",
+  "type": "craft-plugin",
+  "license": "proprietary",
+  "support": {
+    "email": "anthony@therefinery.co.nz",
+    "issues": "https://github.com/therefinerynz/commerce-windcave/issues?state=open",
+    "source": "https://github.com/therefinerynz/commerce-windcave",
+    "docs": "https://github.com/therefinerynz/commerce-windcave",
+    "rss": "https://github.com/therefinerynz/commerce-windcave/releases.atom"
+  },
+  "require": {
+    "php": ">=8.2",
+    "craftcms/cms": "^5.8.0"
+  },
+  "require-dev": {
+    "craftcms/ecs": "dev-main",
+    "craftcms/phpstan": "dev-main"
+  },
+  "autoload": {
+    "psr-4": {
+      "therefinery\\commercewindcave\\": "src/"
+    }
+  },
+  "extra": {
+    "handle": "commerce-windcave",
+    "name": "Windcave",
+    "developer": "The Refinery",
+    "documentationUrl": "https://github.com/therefinerynz/commerce-windcave"
+  },
+  "scripts": {
+    "check-cs": "ecs check --ansi",
+    "fix-cs": "ecs check --ansi --fix",
+    "phpstan": "phpstan --memory-limit=1G"
+  },
+  "config": {
+    "sort-packages": true,
+    "platform": {
+      "php": "8.2"
+    },
+    "allow-plugins": {
+      "yiisoft/yii2-composer": true,
+      "craftcms/plugin-installer": true
+    }
+  }
+}
