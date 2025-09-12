@@ -1,11 +1,15 @@
 <?php
 
-namespace therefinery\commercewindcave;
+namespace therefinerynz\commercewindcave;
 
 use Craft;
 use craft\base\Model;
 use craft\base\Plugin as BasePlugin;
-use therefinery\commercewindcave\models\Settings;
+use craft\events\RegisterComponentTypesEvent;
+use craft\commerce\services\Gateways;
+use therefinerynz\commercewindcave\gateways\Gateway;
+use therefinerynz\commercewindcave\models\Settings;
+use yii\base\Event;
 
 /**
  * Windcave plugin
@@ -34,13 +38,13 @@ class Plugin extends BasePlugin
     {
         parent::init();
 
-        $this->attachEventHandlers();
-
-        // Any code that creates an element query or loads Twig should be deferred until
-        // after Craft is fully initialized, to avoid conflicts with other plugins/modules
-        Craft::$app->onInit(function() {
-            // ...
-        });
+        Event::on(
+            Gateways::class,
+            Gateways::EVENT_REGISTER_GATEWAY_TYPES,
+            function(RegisterComponentTypesEvent $event) {
+                $event->types[] = Gateway::class;
+            }
+        );
     }
 
     protected function createSettingsModel(): ?Model
@@ -54,11 +58,5 @@ class Plugin extends BasePlugin
             'plugin' => $this,
             'settings' => $this->getSettings(),
         ]);
-    }
-
-    private function attachEventHandlers(): void
-    {
-        // Register event handlers here ...
-        // (see https://craftcms.com/docs/5.x/extend/events.html to get started)
     }
 }

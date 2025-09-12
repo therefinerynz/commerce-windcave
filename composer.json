@@ -12,7 +12,9 @@
   },
   "require": {
     "php": ">=8.2",
-    "craftcms/cms": "^5.8.0"
+    "craftcms/cms": "^5.8.0",
+    "craftcms/commerce-omnipay": "^4.2",
+    "omnipay/paymentexpress": "^3.1.1"
   },
   "require-dev": {
     "craftcms/ecs": "dev-main",
@@ -20,7 +22,7 @@
   },
   "autoload": {
     "psr-4": {
-      "therefinery\\commercewindcave\\": "src/"
+      "therefinerynz\\commercewindcave\\": "src/"
     }
   },
   "extra": {

@@ -1,6 +1,32 @@
-{# @var plugin \therefinery\commercewindcave\Plugin #}
-{# @var settings \therefinery\commercewindcave\models\Settings #}
+{# @var plugin \therefinerynz\commercewindcave\Plugin #}
+{# @var settings \therefinerynz\commercewindcave\models\Settings #}
 
 {% import '_includes/forms.twig' as forms %}
 
-{# ... #}
+{{ forms.autosuggestField({
+  label: 'PxPay User ID',
+  name: 'pxPayUserId',
+  value: settings.pxPayUserId,
+  suggestEnvVars: true,
+  instructions: 'Unique username to identify your customer account. <br>The standard format used for Dev PxPayUserId is ‘merchantname_dev’ e.g. storename_dev.<br><strong>Store this in an environment variable</strong>.',
+}) }}
+
+{{ forms.autosuggestField({
+  label: 'PxPay Key',
+  name: 'pxPayKey',
+  value: settings.pxPayKey,
+  suggestEnvVars: true,
+  instructions: 'Unique 64 character key to identify customer account and used to encrypt the transaction request.<br><strong>Store this in an environment variable</strong>'
+}) }}
+
+{{ forms.booleanMenuField({
+  label: 'Test Mode',
+  name: 'testMode',
+  value: settings.testMode,
+  options: [
+    { label: 'Yes', value: '1' },
+    { label: 'No', value: '0' },
+  ],
+  includeEnvVars: true,
+  instructions: 'When enabled, transactions will be sent to the Windcave test environment.',
+}) }}
