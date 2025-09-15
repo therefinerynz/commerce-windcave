@@ -28,3 +28,15 @@ composer require therefinerynz/commerce-windcave
 # tell Craft to install the plugin
 ./craft plugin/install commerce-windcave
 ```
+
+### Setup
+To add a Windcave PxPay 2.0 gateway, go to Commerce → Settings → Gateways and click the “New Gateway” button.
+
+Select “Windcave PxPay 2.0” from the Gateway Type dropdown.
+
+> **Note:** The Windcave PxPay User ID, Key and Test Mode settings should be set as environment variables in your `.env` file for security. For example:
+> ```
+> PXPAY_USER_ID=Merchant_Dev
+> PXPAY_KEY=1234567890abcdef1234567890abcdef
+> PXPAY_TEST_MODE=true
+> ```
